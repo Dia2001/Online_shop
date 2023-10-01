@@ -12,25 +12,9 @@ Project xây dựng dựa trên kiến trúc Clean Architecture.
 - Submit
 
 ## Project structure
-OnlineShop.Application  (Hiển thị giao diện, **nếu viết theo MVC thì bỏ qua UseCases, nếu viết API thì bỏ qua Controller**)
-│   ├───Controllers
-│   ├───Helpers
-│   ├───Middlewares
-│   ├───Migrations (Thứ cần có để DB chạy được)
+![image](https://github.com/Dia2001/dia_online_shop/assets/88370983/83e8e010-62b2-40d3-bca0-ba9127a51c12)
 
-├───OnlineShop.Benchmark (Đo hiệu suất chức năng)
-├───OnlineShop.Business (Chứa những thứ có thể tái sử dụng được chỉ trong dự án này)
-├───OnlineShop.Core (Nơi chứa DB)
-│   ├───Database
-│   ├───ExceptionHandle
-│   ├───Helpers
-│   ├───Models
-│   └───Schemas
-│       └───Base
-├───OnlineShop.Hubs (Realtime)
-├───OnlineShop.Services (Tương tác với DB)
-├───OnlineShop.UnitTest (Testing)
-└───OnlineShop.Utils  (Nơi chứa những thứ có thể tái sử dụng được trong dự án khác)
+
 
 ## Cách chạy
 
