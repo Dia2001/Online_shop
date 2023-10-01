@@ -1,0 +1,124 @@
+// Validating benchmarks:
+// ***** BenchmarkRunner: Start   *****
+// ***** Found 1 benchmark(s) in total *****
+// ***** Building 1 exe(s) in Parallel: Start   *****
+// start dotnet  restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\bin\Release\net7.0\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01
+// command took 1.42 sec and exited with 0
+// start dotnet  build -c Release --no-restore /p:UseSharedCompilation=false /p:BuildInParallel=false /m:1 /p:Deterministic=true /p:Optimize=true in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\bin\Release\net7.0\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01
+// command took 2.75 sec and exited with 0
+// ***** Done, took 00:00:04 (4.23 sec)   *****
+// Found 1 benchmarks:
+//   UserServiceBenchmarks.CheckPermissionS1Benchmark: DefaultJob
+
+Setup power plan (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c FriendlyName: High performance)
+// **************************
+// Benchmark: UserServiceBenchmarks.CheckPermissionS1Benchmark: DefaultJob
+// *** Execute ***
+// Launch: 1 / 1
+// Execute: dotnet f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01.dll --anonymousPipes 1508 1496 --benchmarkName OnlineShop.Benchmark.Services.UserServiceBenchmarks.CheckPermissionS1Benchmark --job Default --benchmarkId 0 in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\bin\Release\net7.0\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01\bin\Release\net7.0
+// BeforeAnythingElse
+
+// Benchmark Process Environment Information:
+// BenchmarkDotNet v0.13.7
+// Runtime=.NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+// GC=Concurrent Workstation
+// HardwareIntrinsics=AVX2,AES,BMI1,BMI2,FMA,LZCNT,PCLMUL,POPCNT VectorSize=256
+// Job: DefaultJob
+
+OverheadJitting  1: 1 op, 197100.00 ns, 197.1000 us/op
+
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.
+ ---> MySqlConnector.MySqlException (0x80004005): Unknown database 'base_core_v1'
+   at MySqlConnector.Core.ServerSession.SwitchAuthenticationAsync(ConnectionSettings cs, String password, PayloadData payload, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 739
+   at MySqlConnector.Core.ServerSession.ConnectAsync(ConnectionSettings cs, MySqlConnection connection, Int32 startTickCount, ILoadBalancer loadBalancer, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ServerSession.cs:line 573
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, String logMessage, Int32 startTickCount, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 403
+   at MySqlConnector.Core.ConnectionPool.ConnectSessionAsync(MySqlConnection connection, String logMessage, Int32 startTickCount, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 408
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 98
+   at MySqlConnector.Core.ConnectionPool.GetSessionAsync(MySqlConnection connection, Int32 startTickCount, Activity activity, IOBehavior ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/Core/ConnectionPool.cs:line 128
+   at MySqlConnector.MySqlConnection.CreateSessionAsync(ConnectionPool pool, Int32 startTickCount, Activity activity, Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 929
+   at MySqlConnector.MySqlConnection.OpenAsync(Nullable`1 ioBehavior, CancellationToken cancellationToken) in /_/src/MySqlConnector/MySqlConnection.cs:line 423
+   at MySqlConnector.MySqlConnection.Open() in /_/src/MySqlConnector/MySqlConnection.cs:line 382
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Pomelo.EntityFrameworkCore.MySql.Storage.Internal.MySqlRelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.<>c__DisplayClass28_0`2.<Execute>b__0(DbContext context, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.ExecuteImplementation[TState,TResult](Func`3 operation, Func`3 verifySucceeded, TState state)
+   at Microsoft.EntityFrameworkCore.Storage.ExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetSingle[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method48(Closure, QueryContext)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.Execute[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.Execute[TResult](Expression expression)
+   at OnlineShop.Services.UserService.CheckPermissionAction(Int32 userId, String endPoint) in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Services\Base\UserService.cs:line 52
+   at OnlineShop.Benchmark.Services.UserServiceBenchmarks.CheckPermissionS1Benchmark() in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\Services\UserServiceBenchmarks.cs:line 26
+   at BenchmarkDotNet.Autogenerated.Runnable_0.WorkloadActionNoUnroll(Int64 invokeCount) in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\bin\Release\net7.0\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01.notcs:line 313
+   at BenchmarkDotNet.Engines.Engine.RunIteration(IterationData data)
+   at BenchmarkDotNet.Engines.EngineFactory.Jit(Engine engine, Int32 jitIndex, Int32 invokeCount, Int32 unrollFactor)
+   at BenchmarkDotNet.Engines.EngineFactory.CreateReadyToRun(EngineParameters engineParameters)
+   at BenchmarkDotNet.Autogenerated.Runnable_0.Run(IHost host, String benchmarkName) in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\bin\Release\net7.0\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01.notcs:line 176
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   --- End of inner exception stack trace ---
+   at System.Reflection.MethodInvoker.Invoke(Object obj, IntPtr* args, BindingFlags invokeAttr)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+   at BenchmarkDotNet.Autogenerated.UniqueProgramName.AfterAssemblyLoadingAttached(String[] args) in D:\ProjectStudy\PetProject\pet_online_shop\OnlineShop.Backend\OnlineShop.Benchmark\bin\Release\net7.0\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01\f2cbdd3b-9e66-4b9c-9cdc-034cfaf83d01.notcs:line 57
+// AfterAll
+No Workload Results were obtained from the run.
+// Benchmark Process 9564 has exited with code -1.
+
+// ** Remained 0 (0.0%) benchmark(s) to run. Estimated finish 2023-08-24 23:29 (0h 0m from now) **
+Successfully reverted power plan (GUID: 381b4222-f694-41f0-9685-ff5bb260df2e FriendlyName: Balanced)
+// ***** BenchmarkRunner: Finish  *****
+
+// * Export *
+  BenchmarkDotNet.Artifacts\results\OnlineShop.Benchmark.Services.UserServiceBenchmarks-report.csv
+  BenchmarkDotNet.Artifacts\results\OnlineShop.Benchmark.Services.UserServiceBenchmarks-report-github.md
+  BenchmarkDotNet.Artifacts\results\OnlineShop.Benchmark.Services.UserServiceBenchmarks-report.html
+
+// * Detailed results *
+UserServiceBenchmarks.CheckPermissionS1Benchmark: DefaultJob
+Runtime = .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2; GC = Concurrent Workstation
+There are not any results runs
+
+// * Summary *
+
+BenchmarkDotNet v0.13.7, Windows 11 (10.0.22000.2295/21H2/SunValley)
+Intel Core i7-10700 CPU 2.90GHz, 1 CPU, 16 logical and 8 physical cores
+.NET SDK 7.0.400
+  [Host]     : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+  DefaultJob : .NET 7.0.10 (7.0.1023.36312), X64 RyuJIT AVX2
+
+
+|                     Method | Mean | Error |
+|--------------------------- |-----:|------:|
+| CheckPermissionS1Benchmark |   NA |    NA |
+
+Benchmarks with issues:
+  UserServiceBenchmarks.CheckPermissionS1Benchmark: DefaultJob
+
+// * Warnings *
+Environment
+  Summary -> Detected error exit code from one of the benchmarks. It might be caused by following antivirus software:
+        - Windows Defender (windowsdefender://)
+Use InProcessEmitToolchain or InProcessNoEmitToolchain to avoid new process creation.
+
+
+// * Legends *
+  Mean  : Arithmetic mean of all measurements
+  Error : Half of 99.9% confidence interval
+  1 ns  : 1 Nanosecond (0.000000001 sec)
+
+// * Diagnostic Output - MemoryDiagnoser *
+
+
+// ***** BenchmarkRunner: End *****
+Run time: 00:00:02 (2.19 sec), executed benchmarks: 1
+
+Global total time: 00:00:06 (6.57 sec), executed benchmarks: 1
+// * Artifacts cleanup *
+Artifacts cleanup is finished
