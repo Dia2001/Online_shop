@@ -30,3 +30,9 @@ Project xây dựng dựa trên kiến trúc Clean Architecture.
 - Chỉnh sửa file `appsetings.json` trong folder OnlineShop.Application chỉnh sửa biến: `connectionString` ứng với chuỗi kết nối của mình
 - cd OnlineShop.Application, vào terminal gõ: `dotnet ef migrations add TenBatKy` (TenBatKy tương ứng với database=TenBatKy ở bước trên)
 - Chạy tiếp lệnh: `dotnet ef database update`
+- 
+## Chú ý
+
+- Đảm bảo đã cài môi trường `MySQL` và password trong `WorkBench` tương ứng password trong file `DataContext.cs`
+- Để có dữ liệu vào: `http://localhost:5001/swagger/index.html`, scroll xuống cuối nhấn `api/seed` để có dữ liệu
+- Nếu không login được FE thì chuyển sang nhánh Staging
